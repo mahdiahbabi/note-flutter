@@ -18,3 +18,6 @@ samples, guidance on mobile development, and a full API reference.
 
 This is a note application with Flutter technology, in which bloc state management is used .
 for use you can clone and run it.
+
+
+![Alt text](Screenshot_20231013_134927.jpg) ![Alt text](Screenshot_20231013_133419.jpg) ![Alt text](Screenshot_20231013_133550.jpg)
