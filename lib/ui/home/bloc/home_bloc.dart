@@ -1,8 +1,7 @@
 
 import 'dart:developer';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:note/common/exeption.dart';
 import 'package:note/data/note.dart';
 import 'package:note/data/repository/note_repository.dart';

@@ -25,13 +25,27 @@ class MyApp extends StatelessWidget {
         homebloc.add(HomeStarted());
         return homebloc;
       },
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: MaterialApp(
+          
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            textTheme:  TextTheme(
+              titleMedium: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w300
+              ),
+              bodySmall: TextStyle(fontSize: 12 , color: Colors.grey.shade600)
+            ),
+            
+            useMaterial3: true,
+          ),
+          debugShowCheckedModeBanner: false,
+          home: const Home(),
         ),
-        home: Home(),
       ),
     );
   }

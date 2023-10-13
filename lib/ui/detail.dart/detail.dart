@@ -3,14 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note/common/string.dart';
+import 'package:note/common/textfield.dart';
 
 import '../../data/repository/note_repository.dart';
 import '../home/bloc/home_bloc.dart';
 
-class detail extends StatelessWidget {
+class DetailScreen extends StatelessWidget {
   final INoteRepository noterepository;
 
-  const detail({super.key, required this.noterepository});
+  const DetailScreen({super.key, required this.noterepository});
   @override
   Widget build(BuildContext context) {
     TextEditingController titleController = TextEditingController();
@@ -49,35 +50,39 @@ class Detail extends StatelessWidget {
           },
           label: const Text(StringText.newText)),
       body: SafeArea(
-        child: Column(children: [
-          const SizedBox(
-            height: 80,
-          ),
-          SizedBox(
-            height: 50,
-            child: TextField(
-              controller: titleController,
-              decoration: InputDecoration(
-                  labelText: 'title',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12))),
-            ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          SizedBox(
-            height: 50,
-            child: TextField(
-              controller: detailController,
-              decoration: InputDecoration(
-                  labelText: 'detail',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12))),
-            ),
-          ),
-        ]),
+        child: TextFieldWidget(titleController: titleController, detailController: detailController),
       ),
     );
   }
 }
+
+
+
+// Column(children: [
+//           const SizedBox(
+//             height: 80,
+//           ),
+//           SizedBox(
+//             height: 50,
+//             child: TextField(
+//               controller: titleController,
+//               decoration: InputDecoration(
+//                   labelText: 'title',
+//                   border: OutlineInputBorder(
+//                       borderRadius: BorderRadius.circular(12))),
+//             ),
+//           ),
+//           const SizedBox(
+//             height: 30,
+//           ),
+//           SizedBox(
+//             height: 50,
+//             child: TextField(
+//               controller: detailController,
+//               decoration: InputDecoration(
+//                   labelText: 'detail',
+//                   border: OutlineInputBorder(
+//                       borderRadius: BorderRadius.circular(12))),
+//             ),
+//           ),
+//         ]),
