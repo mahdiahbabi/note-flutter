@@ -16,9 +16,15 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController titleController = TextEditingController();
     TextEditingController detailController = TextEditingController();
-    return BlocBuilder<HomeBloc, HomeState >(
+    return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        return Detail(noterepository: noterepository, titleController: titleController, detailController: detailController, homeStarted: HomeStarted(),);
+        return  Detail(
+            noterepository: noterepository,
+            titleController: titleController,
+            detailController: detailController,
+            homeStarted: HomeStarted(),
+          );
+        
       },
     );
   }
@@ -29,7 +35,8 @@ class Detail extends StatelessWidget {
     super.key,
     required this.noterepository,
     required this.titleController,
-    required this.detailController, required this.homeStarted,
+    required this.detailController,
+    required this.homeStarted,
   });
   final HomeStarted homeStarted;
   final INoteRepository noterepository;
@@ -39,18 +46,21 @@ class Detail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () async{
-          await  noterepository.addOne(
+          onPressed: () async {
+            await noterepository.addOne(
                 titleController.text, detailController.text);
-             context.read<HomeBloc>().add(homeStarted);
-             Navigator.pop(context);
+            context.read<HomeBloc>().add(homeStarted);
+            Navigator.pop(context);
           },
           label: const Text(StringText.newText)),
-      body: SafeArea(
-        child: TextFieldWidget(titleController: titleController, detailController: detailController),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: TextFieldWidget(
+              titleController: titleController,
+              detailController: detailController),
+        ),
       ),
     );
   }
